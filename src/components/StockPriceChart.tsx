@@ -19,7 +19,7 @@ function StockPriceChart({ symbol }: { symbol: string }): JSX.Element {
 
   // Fetches stock data on component mount
   useEffect(() => {
-    const API_KEY = 'YOUR_API_KEY'; // Replace with your actual API key
+    const API_KEY = '139T7WOPRL55N8DL'; // Replace with your actual API key
     const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=${API_KEY}`;
 
     fetch(url)
@@ -31,12 +31,23 @@ function StockPriceChart({ symbol }: { symbol: string }): JSX.Element {
           datasets: [
             {
               label: symbol,
-              data: Object.values(timeseries).map((point) => point['4. close']),
+              data: Object.values(timeseries).map((point): number => {
+                if (point && typeof point === 'object' && '4. close' in point) {
+                  return point['4. close'] as number;
+                } else {
+                  // Handle unexpected data type (optional)
+                  console.error('Unexpected data format in timeseries');
+                  return 0; // Or any default value
+                }
+              }),
               borderColor: 'blue',
               backgroundColor: 'rgba(0, 0, 255, 0.2)',
             },
           ],
         };
+        
+        
+              
         setStockData(chartData);
       })
       .catch((error) => console.error(error));
