@@ -1,20 +1,18 @@
 import React from 'react';
+import { Card, CardContent, Typography } from '@mui/material';
 
 interface NewsCardProps {
-  title: string;
-  body: string;
-  imageUrl?: string; // Optional image URL
 }
 
-const NewsCard: React.FC<NewsCardProps> = ({ title, body, imageUrl }) => {
+const NewsCard = () => {
   return (
-    <div style={{ backgroundColor: 'black', padding: '20px', borderRadius: '5px' }}>
-      {imageUrl && (
-        <img src={imageUrl} alt={title} style={{ width: '100%' }} />
-      )}
-      <h2 style={{ color: 'white', margin: '0 0 10px 0' }}>{title}</h2>
-      <p style={{ color: 'white' }}>{body}</p>
-    </div>
+    <Card>
+      <CardContent>
+        <Typography variant="body1">
+          Jan Inflation Surges, Squeezing Budgets; S&P 500 Rallies as Markets Face 'Bumpy' 2% Path
+        </Typography>
+      </CardContent>
+    </Card>
   );
 };
 
