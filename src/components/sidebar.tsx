@@ -1,5 +1,9 @@
+import { Drawer, IconButton, Stack } from '@mui/material';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import React from 'react';
-import { Drawer } from '@mui/material';
 
 interface SidebarProps {
     isOpen ?: boolean;
@@ -17,7 +21,21 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false }: SidebarProps) => {
     keepMounted: false,
   }}
 />
-
+<Stack direction="column" spacing={2}>
+        <IconButton>
+            <BookmarkIcon />
+        </IconButton>
+        <IconButton>
+            <QueryStatsIcon />    
+        </IconButton>
+        <IconButton>
+            <MenuBookIcon />
+        </IconButton>
+        <IconButton>
+            <BookmarkBorderIcon />
+        </IconButton>
+        </Stack>
+        
     </div>
   );
 };

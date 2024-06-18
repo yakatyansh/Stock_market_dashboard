@@ -28,10 +28,6 @@ const SectorPerformance = () => {
         <Typography variant="body1">Consumer Discretionary</Typography>
         <Typography variant="body1">+0.841</Typography>
         </Grid>
-        <Grid item xs={6}>
-        <Typography variant="body1">Consumer Staples</Typography>
-        <Typography variant="body1">+0.841</Typography>
-        </Grid>
         
     </Grid>
     );

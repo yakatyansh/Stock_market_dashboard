@@ -46,10 +46,16 @@ const TopBarRight = styled('div')`
 const MarketSummaryCardContainer = styled(Card)`
   background-color: #f5f5f5;
   padding: 1rem;
+  width: 100%;
+  height: 100%;
+  margin-right: 1rem;
 `;
 
 const NewsCardContainer = styled(Card)`
   padding: 1rem;
+  width: 100%;
+  height: 100%;
+  margin-left: 1rem;
 `;
 
 export default theme;

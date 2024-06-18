@@ -6,13 +6,24 @@ interface NewsCardProps {
 
 const NewsCard = () => {
     const [newsData, setNewsData] = useState<string>('');
+    const [Sentment, setSentiment] = useState<string>('');
 
     useEffect(() => {
-        fetch('https://newsapi.org/v2/top-headlines?country=in&apiKey=7914464d26574892b8ef81b9fc984b24')
+        fetch('https://api.polygon.io/v2/reference/news?ticker=AAPL&limit=10&apiKey=v4pQWriX9tFHHj85ATnnX68GMbUrLRQg')
             .then((response) => response.json())
             .then((data) => {
                 // Process the data and set it to the state
-                setNewsData(data.articles[0].title);
+                setSentiment(data.sentiment);
+            });
+    }, []);
+    
+
+    useEffect(() => {
+        fetch('https://api.polygon.io/v2/reference/news?ticker=AAPL&limit=10&apiKey=v4pQWriX9tFHHj85ATnnX68GMbUrLRQg')
+            .then((response) => response.json())
+            .then((data) => {
+                // Process the data and set it to the state
+                setNewsData(data.results[0].title);
             })
             .catch((error) => {
                 console.error('Error fetching news data:', error);
@@ -25,6 +36,9 @@ const NewsCard = () => {
     <Card>
       <CardContent>
         <Typography variant="body2">
+            The Market is currently {Sentment}
+        </Typography>
+        <Typography variant="body1">
             {newsData}
         </Typography>
       </CardContent>
